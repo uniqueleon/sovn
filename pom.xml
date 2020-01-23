@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.8.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>org.aztec</groupId>
+    <artifactId>sovn</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Framework</name>
+    <description></description>
+    <packaging>pom</packaging>
+    
+    <modules>
+    	<module>api</module>
+    	<module>core</module>
+    	<module>server</module>
+    	<module>client</module>
+    	<module>web</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+        <sharding-sphere.version>3.0.0.M2</sharding-sphere.version>
+        
+        <elastic-job.version>2.1.6-SNAPSHOT</elastic-job.version>
+        <springframework.version>4.3.4.RELEASE</springframework.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <logback.version>1.1.2</logback.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+        <h2.version>1.4.184</h2.version>
+        <mysql.version>5.1.30</mysql.version>
+        <curator.version>2.10.0</curator.version>
+        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+        <sharding-sphere.version>3.0.0.M2</sharding-sphere.version>
+        <main-version>0.0.1-SNAPSHOT</main-version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    
+    <!-- <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>billing maven2</name>
+            <url>http://120.79.60.70:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>billing-maven2 Snapshot Repository</name>
+            <url>http://120.79.60.70:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement> -->
+
+</project>
