@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface Environment {
 
-	public Map<String,Object> getProperties();
-	public Object getProperty(String name);
-	public void setProperty(String name,Object value);
+	public Map<String,Kownledge> Kownledge();
+	public Kownledge Kownledge(String name);
+	public void setKownledge(String name,Object value);
 }
