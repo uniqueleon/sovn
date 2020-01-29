@@ -1,5 +1,6 @@
 package org.aztec.sovn.core;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,4 +28,5 @@ public interface Belief {
 	public Map<String,Kownledge> getKownledge();
 	public Kownledge getKownledgeByName(String name);
 	public void setKownledge(String name,Kownledge konwledge);
+	public List<KownledgeOfMySelf> getKonwledgeOfMySelf();
 }

@@ -36,6 +36,13 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.tilab.jade</groupId>
+			<artifactId>jade</artifactId>
+			<version>4.5.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/jade-4.5.0.jar</systemPath>
+		</dependency>
+		<dependency>
 			<groupId>it.unibo.alice.tuprolog</groupId>
 			<artifactId>tuprolog</artifactId>
 			<version>3.3.0</version>

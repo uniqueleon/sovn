@@ -1,10 +1,10 @@
 package org.aztec.sovn.core;
 
-import java.util.Map;
+/**
+ * 用于抽象Agent的外部环境.
+ * @author liming
+ *
+ */
+public interface Environment extends Belief{
 
-public interface Environment {
-
-	public Map<String,Kownledge> Kownledge();
-	public Kownledge Kownledge(String name);
-	public void setKownledge(String name,Object value);
 }
