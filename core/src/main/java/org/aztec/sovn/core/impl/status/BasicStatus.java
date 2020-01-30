@@ -1,8 +1,13 @@
-package org.aztec.sovn.core.impl.kownledge;
+package org.aztec.sovn.core.impl.status;
 
-import org.aztec.sovn.core.impl.MapBasedKownledge;
+import java.util.List;
 
-public class HealthKownledge extends MapBasedKownledge {
+import org.aztec.sovn.core.StatusValidator;
+import org.aztec.sovn.core.impl.MapBasedStatus;
+
+public abstract class BasicStatus extends MapBasedStatus {
+	
+	protected abstract List<StatusValidator> getValidators();
 
 	public static interface HealthKeys{
 		// if this value equals 0 or below 0, the agent will "die".
@@ -19,7 +24,12 @@ public class HealthKownledge extends MapBasedKownledge {
 	@Override
 	protected void validate(String name, Object value) {
 		// TODO Auto-generated method stub
-		
+		List<StatusValidator> validators = getValidators();
+		if(validators != null) {
+			validators.stream().forEach(validator -> {
+				validator.validate(this);
+			});
+		}
 	}
 
 }

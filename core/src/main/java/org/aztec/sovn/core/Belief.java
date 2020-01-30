@@ -25,9 +25,10 @@ symbolic or logical at all<br>
  */
 public interface Belief {
 
+	public List<Status> getStatus();
 	public Map<String,Kownledge> getKownledge();
 	public Kownledge getKownledgeByName(String name);
 	public void setKownledge(String name,Kownledge konwledge);
 	public List<Kownledge> getKownledges();
-	public List<MeaningInterpreter> getInterpreters();
+	public List<KonwledgeInterpreter> getInterpreters();
 }

@@ -1,5 +1,7 @@
 package org.aztec.sovn.core;
 
+import reactor.core.publisher.Flux;
+
 /**
  * A rational intelligent artifact which based on the BDI model<br>
  * 
@@ -11,6 +13,6 @@ package org.aztec.sovn.core;
 public interface BDIAgent {
 
 	public Belief getBeliefs();
-	public Desire getDesire();
-	public Intension getIntension();
+	public BDIAgentMetaData getMetaData();
+	public void setBelief(Belief belief);
 }

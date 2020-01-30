@@ -5,7 +5,8 @@ import java.util.Map;
 
 import org.aztec.sovn.core.Belief;
 import org.aztec.sovn.core.Kownledge;
-import org.aztec.sovn.core.MeaningInterpreter;
+import org.aztec.sovn.core.Status;
+import org.aztec.sovn.core.KonwledgeInterpreter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,9 @@ public class InMemoryBelief implements Belief {
 	
 	private Map<String,Kownledge> kownledges = Maps.newHashMap();
 	@Autowired
-	private List<MeaningInterpreter> interpreters;
+	private List<KonwledgeInterpreter> interpreters;
+	@Autowired
+	private List<Status> status;
 
 	@Override
 	public Map<String, Kownledge> getKownledge() {
@@ -32,18 +35,22 @@ public class InMemoryBelief implements Belief {
 
 	@Override
 	public void setKownledge(String name, Kownledge kownledge) {
-
 		kownledges.put(name, kownledge);
 	}
 
 	@Override
-	public List<MeaningInterpreter> getInterpreters() {
+	public List<KonwledgeInterpreter> getInterpreters() {
 		return interpreters;
 	}
 
 	@Override
 	public List<Kownledge> getKownledges() {
 		return Lists.newArrayList(kownledges.values());
+	}
+
+	@Override
+	public List<Status> getStatus() {
+		return status;
 	}
 
 

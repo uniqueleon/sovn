@@ -2,12 +2,11 @@ package org.aztec.sovn.core.impl;
 
 import java.util.Map;
 
-import org.aztec.sovn.core.Kownledge;
-import org.aztec.sovn.core.Meaning;
+import org.aztec.sovn.core.Status;
 
 import com.google.api.client.util.Maps;
 
-public abstract class MapBasedKownledge implements Kownledge {
+public abstract class MapBasedStatus implements Status {
 	
 	protected Map<String,Object> attributes = Maps.newHashMap();
 	

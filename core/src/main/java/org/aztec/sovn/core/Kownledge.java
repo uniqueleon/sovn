@@ -11,8 +11,9 @@ import java.util.Map;
  */
 public interface Kownledge {
 
+	public String name();
 	
-	public Map<String,Object> getAttributes();
-	public Object getAttribute(String name);
-	public void setAttribute(String name,Object value);
+	public Desire toDesire();
+	
+	public void effect(BDIAgent agent);
 }
