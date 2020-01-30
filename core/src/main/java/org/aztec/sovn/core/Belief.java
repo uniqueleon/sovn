@@ -28,5 +28,6 @@ public interface Belief {
 	public Map<String,Kownledge> getKownledge();
 	public Kownledge getKownledgeByName(String name);
 	public void setKownledge(String name,Kownledge konwledge);
-	public List<KownledgeOfMySelf> getKonwledgeOfMySelf();
+	public List<Kownledge> getKownledges();
+	public List<MeaningInterpreter> getInterpreters();
 }

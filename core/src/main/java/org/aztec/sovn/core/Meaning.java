@@ -18,4 +18,6 @@ public interface Meaning {
 	 * @return
 	 */
 	public Desire toDesire();
+	
+	public void effect(BDIAgent agent);
 }
