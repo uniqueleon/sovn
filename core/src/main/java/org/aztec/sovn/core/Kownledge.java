@@ -13,7 +13,13 @@ public interface Kownledge {
 
 	public String name();
 	
-	public Desire toDesire();
-	
-	public void effect(BDIAgent agent);
+	public static enum BaseKownledge{
+		STATUS_NUMBER_UPDATE,
+		STATUS_MESSAGE_UPDATE,
+		STATUS_FLAG_UPDATE,
+		TALK,
+		SLEEP,
+		WAKEUP,
+		DEAD;
+	}
 }

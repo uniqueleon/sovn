@@ -28,7 +28,7 @@ public interface Desire {
 	 * 
 	 * @return
 	 */
-	public Intension getRationalIntension();
+	public Intention getRationalIntension();
 	
 	/**
 	 * Test a desire wether reasonable or not . The so-called "reasonable" means the desire can be achieved according to the current environment.  
@@ -38,4 +38,10 @@ public interface Desire {
 	 * @return
 	 */
 	public boolean isReasonable();
+	
+	/**
+	 * 判断需求是否已经得到满足
+	 * @return
+	 */
+	public boolean isSatified();
 }

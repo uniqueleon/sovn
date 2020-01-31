@@ -8,5 +8,5 @@ package org.aztec.sovn.core;
  */
 public interface Plan {
 
-	public void execute();
+	public void execute(BDIAgent agent);
 }

@@ -5,7 +5,8 @@ import java.util.List;
 import org.aztec.sovn.core.BDIAgent;
 import org.aztec.sovn.core.BDIAgentMetaData;
 import org.aztec.sovn.core.Belief;
-import org.aztec.sovn.core.Kownledge;
+import org.aztec.sovn.core.Desire;
+import org.aztec.sovn.core.DesireGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import jade.core.Agent;
@@ -16,12 +17,22 @@ import reactor.core.publisher.Flux;
 
 public class BaseBDIAgent extends Agent implements BDIAgent {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7935698971870336568L;
+
 	private Belief belief;
 	
 	@Autowired
 	private List<Behaviour> behaviours;
 	
 	private BDIAgentMetaData metaData;
+	
+	private Flux<Desire> desires;
+	
+	@Autowired
+	private DesireGenerator generator;
 	
 
 	@Override
@@ -40,6 +51,7 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 			behaviour.setAgent(this);
 			super.addBehaviour(behaviour);
 		}
+		desires = generator.generate(this);
 		super.setup();
 	}
 
@@ -70,4 +82,16 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 	}
 
 
+	@Override
+	public void setDesire(Flux<Desire> desire) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Flux<Desire> getCurrentDesire() {
+		return desires;
+	}
+
+	
 }

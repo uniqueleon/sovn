@@ -16,11 +16,17 @@ import com.google.common.collect.Lists;
 @Component("InMemoryBelief")
 public class InMemoryBelief implements Belief {
 	
-	private Map<String,Kownledge> kownledges = Maps.newHashMap();
+	protected Map<String,Kownledge> kownledges = Maps.newHashMap();
 	@Autowired
-	private List<KonwledgeInterpreter> interpreters;
+	protected List<KonwledgeInterpreter> interpreters;
 	@Autowired
-	private List<Status> status;
+	protected List<Status> status;
+	
+	
+
+	public InMemoryBelief() {
+		super();
+	}
 
 	@Override
 	public Map<String, Kownledge> getKownledge() {

@@ -10,7 +10,13 @@ world.</br>
  * @author liming
  *
  */
-public interface Intension {
+public interface Intention {
 
-	public List<Plan> getPlans();
+	public Plans getPlans();
+	public boolean isReady();
+	public boolean isStoped();
+	public boolean isRunning();
+	public boolean isFinished();
+	public void cancel();
+	public void interrupt();
 }

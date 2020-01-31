@@ -12,7 +12,10 @@ import reactor.core.publisher.Flux;
  */
 public interface BDIAgent {
 
+	public String getName();
 	public Belief getBeliefs();
 	public BDIAgentMetaData getMetaData();
 	public void setBelief(Belief belief);
+	public void setDesire(Flux<Desire> desires);
+	public Flux<Desire> getCurrentDesire();
 }
