@@ -77,9 +77,11 @@ public class Sensor extends TickerBehaviour {
 			.subscribe(interprector -> {
 				Flux<Flux<Desire>> desires = Flux.from(ss -> {
 					if(interprector.accept(self.getStatus())) {
-						Kownledge kownledge = interprector.interpret(self.getStatus());
-						belief.setKownledge(kownledge.name(), kownledge);
-						ss.onNext(generator.generate(self));
+						Kownledge kownledge = interprector.introspect(self.getStatus());
+						if(kownledge != null) {
+							belief.setKownledge(kownledge.name(), kownledge);
+							ss.onNext(generator.generate(self));
+						}
 					}
 				});
 				desires.subscribe(flux -> {

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.aztec.sovn.core.mas.Kownledge;
 import org.aztec.sovn.core.mas.KownledgeContainer;
-import org.aztec.sovn.core.mas.KownledgeInterpreter;
+import org.aztec.sovn.core.mas.KownledgeIntrospector;
 import org.aztec.sovn.core.mas.ml.prolog.PrologEngine;
 import org.aztec.sovn.core.mas.utils.AgentLogger;
 
@@ -18,7 +18,7 @@ import alice.tuprolog.InvalidLibraryException;
 public class PrologKownledgeContainer implements KownledgeContainer {
 	
 	protected Map<String,Kownledge> kownledges = Maps.newHashMap();
-	protected List<KownledgeInterpreter> interpreters = Lists.newArrayList();
+	protected List<KownledgeIntrospector> interpreters = Lists.newArrayList();
 	File localKownledgeFile;
 	PrologEngine prolog;
 
@@ -42,7 +42,7 @@ public class PrologKownledgeContainer implements KownledgeContainer {
 	}
 
 	@Override
-	public List<KownledgeInterpreter> getInterpreters() {
+	public List<KownledgeIntrospector> getInterpreters() {
 		return interpreters;
 	}
 

@@ -18,7 +18,7 @@ import reactor.core.publisher.Flux;
 
 @Component("baseBDIAgent")
 @Scope("prototype")
-public class BaseBDIAgent extends Agent implements BDIAgent {
+public class BasicBDIAgent extends Agent implements BDIAgent {
 
 	/**
 	 * 
@@ -65,7 +65,7 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 		super.takeDown();
 	}
 
-	public BaseBDIAgent(BDIAgentMetaData metaData) {
+	public BasicBDIAgent(BDIAgentMetaData metaData) {
 		super();
 		this.metaData = metaData;
 	}

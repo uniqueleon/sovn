@@ -5,7 +5,7 @@ import java.util.List;
 import org.aztec.sovn.core.mas.Environment;
 import org.aztec.sovn.core.mas.Kownledge;
 import org.aztec.sovn.core.mas.KownledgeContainer;
-import org.aztec.sovn.core.mas.KownledgeInterpreter;
+import org.aztec.sovn.core.mas.KownledgeIntrospector;
 import org.aztec.sovn.core.mas.Status;
 import org.aztec.sovn.core.mas.ml.prolog.PrologEngine;
 import org.aztec.sovn.core.mas.utils.AgentLogger;
@@ -52,7 +52,7 @@ public class LocalEnvironment implements Environment {
 	}
 
 	@Override
-	public List<KownledgeInterpreter> getInterpreters() {
+	public List<KownledgeIntrospector> getInterpreters() {
 		return container.getInterpreters();
 	}
 

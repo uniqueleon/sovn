@@ -21,6 +21,8 @@ public class HealthStatus extends BasicStatus {
 		String errorCount = "errorCount";
 		String successCount = "successCount";
 		String actionCount = "actionCount";
+		String basicSuccessRate = "basicSuccessRate";
+		String leastSuccessRate = "leastSuccessRate";
 	}
 
 	public HealthStatus() {

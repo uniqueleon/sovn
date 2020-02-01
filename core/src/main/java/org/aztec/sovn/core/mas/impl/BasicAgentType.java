@@ -18,7 +18,7 @@ public class BasicAgentType implements AgentType {
 
 	@Override
 	public Class<? extends BDIAgent> getAgentCls() {
-		return BaseBDIAgent.class;
+		return BasicBDIAgent.class;
 	}
 
 }

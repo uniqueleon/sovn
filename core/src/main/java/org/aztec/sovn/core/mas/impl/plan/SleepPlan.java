@@ -14,7 +14,7 @@ public class SleepPlan extends BasicPlan implements Plan {
 		// TODO Auto-generated method stub
 		for(Behaviour behavior : agent.getBahaviors()) {
 			if(behavior instanceof Sensor) {
-				((Sensor) behavior).stop();
+				((Sensor) behavior).stop(agent.getMetaData().getRateOfReaction());
 			}
 		}
 	}

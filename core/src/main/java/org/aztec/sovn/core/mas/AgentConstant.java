@@ -1,31 +1,30 @@
 package org.aztec.sovn.core.mas;
 
 public interface AgentConstant {
-
 	
-	public static enum BaseKownledge{
-		STATUS_NUMBER_OPT("numberOpt"),
-		STATUS_MESSAGE_UPDATE("msgUpdate"),
-		STATUS_FLAG_UPDATE("flagUpdate"),
-		TALK("talk"),
-		SLEEP("sleep"),
-		WAKEUP("wakeup"),
-		DEAD("dead");
+	public static enum MathOperator{
+		ADD('+'),
+		SUBSTRACT('-'),
+		MULTIPLE('*'),
+		DIVIDE('/'),
+		POW('^'),
+		MOD('%'),
+		BIT_AND('&'),
+		BIT_OR('|');
 		
-		private String name;
+		char opt;
 
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		private BaseKownledge(String name) {
-			this.name = name;
+		private MathOperator(char opt) {
+			this.opt = opt;
 		}
 		
-		
+		public static MathOperator getOperator(char optChar) {
+			for(MathOperator opt : MathOperator.values()) {
+				if(opt.opt == optChar) {
+					return opt;
+				}
+			}
+			return null;
+		}
 	}
 }

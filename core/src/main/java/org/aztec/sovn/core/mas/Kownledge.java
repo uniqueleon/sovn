@@ -20,6 +20,7 @@ public interface Kownledge {
 		TALK("talk"),
 		SLEEP("sleep"),
 		WAKEUP("wakeup"),
+		IDLE("idle"),
 		DEAD("dead");
 		
 		private String name;

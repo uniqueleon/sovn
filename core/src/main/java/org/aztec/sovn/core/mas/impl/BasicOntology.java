@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 
 @Component("baseOntology")
 @Scope("prototype")
-public class BaseOntology implements Ontology {
+public class BasicOntology implements Ontology {
 
-	public BaseOntology() {
+	public BasicOntology() {
 		// TODO Auto-generated constructor stub
 	}
 

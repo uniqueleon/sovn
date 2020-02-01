@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.google.api.client.util.Maps;
+import static org.aztec.sovn.core.mas.AgentConstant.MathOperator;
 
 /**
  * 算术表达式计算
@@ -13,31 +14,7 @@ import com.google.api.client.util.Maps;
  */
 public class Eval {
 	
-	public static enum MathOperator{
-		ADD('+'),
-		SUBSTRACT('-'),
-		MULTIPLE('*'),
-		DIVIDE('/'),
-		POW('^'),
-		MOD('%'),
-		BIT_AND('&'),
-		BIT_OR('|');
-		
-		char opt;
-
-		private MathOperator(char opt) {
-			this.opt = opt;
-		}
-		
-		public static MathOperator getOperator(char optChar) {
-			for(MathOperator opt : MathOperator.values()) {
-				if(opt.opt == optChar) {
-					return opt;
-				}
-			}
-			return null;
-		}
-	}
+	
 	
 	private static Pattern OperationPattern = Pattern.compile("\'[\\+|\\-|\\*|\\/|\\%|\\^|\\%|\\&|\\|]\'\\(\\w+,\\w+\\)");
 
@@ -74,24 +51,6 @@ public class Eval {
 		String tmpName;
 		MathOperator operator;
 		double result = 0;
-		public String getOpt1() {
-			return opt1;
-		}
-		public void setOpt1(String opt1) {
-			this.opt1 = opt1;
-		}
-		public String getOpt2() {
-			return opt2;
-		}
-		public void setOpt2(String opt2) {
-			this.opt2 = opt2;
-		}
-		public MathOperator getOperator() {
-			return operator;
-		}
-		public void setOperator(MathOperator operator) {
-			this.operator = operator;
-		}
 		public Expression(String expr,int index) {
 			super();
 			operator = getOperator(expr);

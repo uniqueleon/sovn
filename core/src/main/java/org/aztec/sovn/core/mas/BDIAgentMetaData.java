@@ -12,6 +12,7 @@ import java.util.List;
 public interface BDIAgentMetaData {
 
 	public long getRateOfReaction();
-	public List<Status> getInitialStatus();
+	public long getSleepInterval();
+	public Status getInitialStatus();
 	public AgentType getType();
 }

@@ -9,6 +9,6 @@ public interface KownledgeContainer {
 	public Kownledge getKownledgeByName(String name);
 	public void setKownledge(String name,Kownledge konwledge);
 	public List<Kownledge> getKownledges();
-	public List<KownledgeInterpreter> getInterpreters();
+	public List<KownledgeIntrospector> getInterpreters();
 	public PrologEngine getProlog();
 }

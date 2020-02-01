@@ -22,4 +22,5 @@ public abstract class BasicStatus extends MapBasedStatus {
 		}
 	}
 
+	
 }
