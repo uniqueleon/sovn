@@ -23,12 +23,8 @@ symbolic or logical at all<br>
  * @author liming
  *
  */
-public interface Belief {
+public interface Belief extends SelfAware,KownledgeContainer{
 
-	public List<Status> getStatus();
-	public Map<String,Kownledge> getKownledge();
-	public Kownledge getKownledgeByName(String name);
-	public void setKownledge(String name,Kownledge konwledge);
-	public List<Kownledge> getKownledges();
-	public List<KonwledgeInterpreter> getInterpreters();
+	public Environment getEnvironment();
+	public void setEnvironment(Environment env);
 }

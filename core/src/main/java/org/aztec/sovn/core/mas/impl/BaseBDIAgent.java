@@ -7,6 +7,7 @@ import org.aztec.sovn.core.mas.BDIAgentMetaData;
 import org.aztec.sovn.core.mas.Belief;
 import org.aztec.sovn.core.mas.Desire;
 import org.aztec.sovn.core.mas.DesireGenerator;
+import org.aztec.sovn.core.mas.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import jade.core.Agent;
@@ -34,6 +35,7 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 	@Autowired
 	private DesireGenerator generator;
 	
+	private List<Status> status;
 
 	@Override
 	public Belief getBeliefs() {
@@ -63,11 +65,9 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 		super.takeDown();
 	}
 
-	public BaseBDIAgent(BDIAgentMetaData metaData,
-			Belief belief) {
+	public BaseBDIAgent(BDIAgentMetaData metaData) {
 		super();
 		this.metaData = metaData;
-		this.belief = belief;
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 	@Override
 	public void setDesire(Flux<Desire> desire) {
 		// TODO Auto-generated method stub
-		
+		this.desires = desire;
 	}
 
 	@Override
@@ -93,5 +93,9 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 		return desires;
 	}
 
-	
+
+	@Override
+	public List<Status> getStatus() {
+		return status;
+	}
 }

@@ -10,7 +10,7 @@ world.</br>
  * @author liming
  *
  */
-public interface Intention {
+public interface Intention extends SelfAware{
 
 	public List<Plan> getPlans();
 	public boolean isReady();

@@ -2,15 +2,18 @@ package org.aztec.sovn.core.mas.impl;
 
 import java.util.Stack;
 
+import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Desire;
 import org.aztec.sovn.core.mas.Intention;
+
 
 public class StackDesire implements Desire {
 	
 	protected Stack<Intention> intentions = new Stack<>();
+	protected BDIAgent self;
 
-	public StackDesire() {
-		// TODO Auto-generated constructor stub
+	public StackDesire(BDIAgent self) {
+		this.self = self;
 	}
 
 	@Override
@@ -30,6 +33,14 @@ public class StackDesire implements Desire {
 	@Override
 	public boolean isSatified() {
 		return intentions.isEmpty();
+	}
+
+	public BDIAgent getSelf() {
+		return self;
+	}
+
+	public void setSelf(BDIAgent self) {
+		this.self = self;
 	}
 
 }

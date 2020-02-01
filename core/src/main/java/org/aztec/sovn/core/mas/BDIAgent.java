@@ -1,5 +1,7 @@
 package org.aztec.sovn.core.mas;
 
+import java.util.List;
+
 import reactor.core.publisher.Flux;
 
 /**
@@ -14,6 +16,7 @@ public interface BDIAgent {
 
 	public String getName();
 	public Belief getBeliefs();
+	public List<Status> getStatus();
 	public BDIAgentMetaData getMetaData();
 	public void setBelief(Belief belief);
 	public void setDesire(Flux<Desire> desires);

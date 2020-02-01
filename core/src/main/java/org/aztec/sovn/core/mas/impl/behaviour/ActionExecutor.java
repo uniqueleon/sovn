@@ -3,6 +3,7 @@ package org.aztec.sovn.core.mas.impl.behaviour;
 import org.apache.commons.collections.CollectionUtils;
 import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Intention;
+import org.aztec.sovn.core.mas.impl.AgentHelper;
 import org.aztec.sovn.core.mas.utils.AgentLogger;
 import org.aztec.sovn.core.mas.utils.ExecutorServices;
 import org.springframework.beans.BeansException;

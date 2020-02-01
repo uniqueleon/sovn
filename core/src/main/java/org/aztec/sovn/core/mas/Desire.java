@@ -11,7 +11,7 @@ cannot automatically recover from failures (unless this is explicitly coded by t
 programmer) and cannot discover and make use of opportunities as they unexpectedly
 present themselves.<br>
 
-渴望(或者,更通俗地说，目标)封装了另外(译者注:对于Belief来说)一些必要的系统状态.重申,从计算机术语来说，一个目标可能仅仅只是一个变量的值,一个
+追求(或者,更通俗地说，目标)封装了另外(译者注:对于Belief来说)一些必要的系统状态.重申,从计算机术语来说，一个目标可能仅仅只是一个变量的值,一个
 结构化的记录,或者一个逻辑中的逻辑表达式.重点是目标代表的一些所追求的最终状态.常规的计算机软件都是"面向任务的"而不是"面向目标的".也就是说,每个任务
 (或者，子程序)都是在不知道为什么要执行它的情况下被执行的.这意味着系统不能自动从失败中恢复过来(除非程序员显式编码重试机制)和当出现异常时
 不能发现和及时利用所遇到的机会(译者注:这里可理解为因为异常而错过了最好的执行时机,但由于belief记录了系统事件后,Agent可以通过disire触发重现执行
@@ -20,7 +20,7 @@ present themselves.<br>
  * @author liming
  *
  */
-public interface Desire {
+public interface Desire extends SelfAware{
 
 	/**
 	 * If the desire is reasonable, the desire should be change to intension.
@@ -44,4 +44,11 @@ public interface Desire {
 	 * @return
 	 */
 	public boolean isSatified();
+	
+	/**
+	 * 增加意图
+	 * @param intention
+	 */
+	public void push(Intention intention);
+	
 }

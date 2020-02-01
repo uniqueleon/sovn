@@ -1,4 +1,4 @@
-package org.aztec.sovn.core.mas.impl.behaviour;
+package org.aztec.sovn.core.mas.impl;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import org.aztec.sovn.core.mas.Desire;
 import org.aztec.sovn.core.mas.Kownledge;
 import org.aztec.sovn.core.mas.Ontology;
 import org.aztec.sovn.core.mas.Term;
-import org.aztec.sovn.core.mas.impl.PrologBelief;
 import org.aztec.sovn.core.mas.utils.AgentLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,6 +37,12 @@ public class PrologGenerator implements  org.aztec.sovn.core.mas.DesireGenerator
 						SolveInfo si = pBelief.getProlog().solve(kownledge.name() + "(" + agent.getName() + ").");
 						if(si.isSuccess()) {
 							// To execute internal action.
+							Term term = ontology.translate(kownledge);
+							if(term != null) {
+								if(term.isComputional()) {
+									
+								}
+							}
 						}
 						else {
 							si = pBelief.getProlog().solve(kownledge.name() + "(X).");

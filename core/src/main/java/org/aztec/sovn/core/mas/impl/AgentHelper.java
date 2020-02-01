@@ -1,4 +1,4 @@
-package org.aztec.sovn.core.mas.impl.behaviour;
+package org.aztec.sovn.core.mas.impl;
 
 import org.aztec.sovn.core.mas.BDIAgent;
 

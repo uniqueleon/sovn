@@ -1,6 +1,7 @@
 package org.aztec.sovn.core.mas.impl.behaviour;
 
 import org.aztec.sovn.core.mas.BDIAgent;
+import org.aztec.sovn.core.mas.impl.AgentHelper;
 
 import jade.core.behaviours.CyclicBehaviour;
 

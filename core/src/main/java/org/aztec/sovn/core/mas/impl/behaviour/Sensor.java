@@ -5,8 +5,9 @@ import java.util.List;
 import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Belief;
 import org.aztec.sovn.core.mas.DesireGenerator;
-import org.aztec.sovn.core.mas.KonwledgeInterpreter;
+import org.aztec.sovn.core.mas.KownledgeInterpreter;
 import org.aztec.sovn.core.mas.Kownledge;
+import org.aztec.sovn.core.mas.impl.AgentHelper;
 import org.aztec.sovn.core.mas.utils.ExecutorServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -53,10 +54,10 @@ public class Sensor extends TickerBehaviour {
 		@Override
 		public void run() {
 			Belief belief = self.getBeliefs();
-			Flux.fromStream(belief.getStatus().stream())
+			Flux.fromStream(self.getStatus().stream())
 			.subscribe(status -> {
 				List<Kownledge> kownledges  = belief.getKownledges();
-				List<KonwledgeInterpreter> interpreters = belief.getInterpreters();
+				List<KownledgeInterpreter> interpreters = belief.getInterpreters();
 				interpreters.stream().forEach(interpreter -> {
 					if(interpreter.accept(status)) {
 						kownledges.addAll(interpreter.interpret(status));

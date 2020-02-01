@@ -1,12 +1,17 @@
 package org.aztec.sovn.core.mas;
 
+/**
+ * 封装所有由Agent框架引发的异常.
+ * @author uniqueleon
+ *
+ */
 public class AgentException extends RuntimeException {
 	
 	private String errorCode;
 	
 	public static interface CommonErrorCodes {
 		String PREFIX = "AE_COMMON_E_";
-		String UNKONW_ERROR = "001";
+		String UNKONW_ERROR = PREFIX + "001";
 	}
 
 	public AgentException(String errorCode) {

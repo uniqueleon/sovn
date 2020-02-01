@@ -14,7 +14,7 @@ public class NumericUpdater extends BasicPlan {
 
 	@Override
 	public void doRun(BDIAgent agent) {
-		agent.getBeliefs().getStatus();
+		//agent.getBeliefs().getStatus();
 	}
 
 	@Override

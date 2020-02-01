@@ -7,6 +7,8 @@ import org.aztec.sovn.core.mas.Intention;
 import org.aztec.sovn.core.mas.Plan;
 import org.aztec.sovn.core.mas.utils.ExecutorServices;
 
+import com.google.common.collect.Lists;
+
 public class DefaultIntention implements Intention {
 	
 	protected List<Plan> plans;
@@ -19,6 +21,7 @@ public class DefaultIntention implements Intention {
 
 	public DefaultIntention(BDIAgent self) {
 		this.self = self;
+		plans = Lists.newArrayList();
 	}
 
 

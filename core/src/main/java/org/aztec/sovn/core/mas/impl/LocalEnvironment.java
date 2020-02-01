@@ -2,26 +2,26 @@ package org.aztec.sovn.core.mas.impl;
 
 import java.util.List;
 
-import org.aztec.sovn.core.mas.BDIAgent;
-import org.aztec.sovn.core.mas.Belief;
 import org.aztec.sovn.core.mas.Environment;
 import org.aztec.sovn.core.mas.Kownledge;
 import org.aztec.sovn.core.mas.KownledgeContainer;
 import org.aztec.sovn.core.mas.KownledgeInterpreter;
+import org.aztec.sovn.core.mas.Status;
 
-public class InMemoryBelief extends SelfAwareObject implements Belief {
-	
+import com.google.common.collect.Lists;
+
+public class LocalEnvironment implements Environment {
+
 	private KownledgeContainer container = new BasicKownledgeContainer();
-	private Environment env;
-	
-	public InMemoryBelief(BDIAgent self,Environment evn) {
-		super(self);
-		this.env = env;
+	private List<Status> status = Lists.newArrayList();
+	private static final LocalEnvironment instance = new LocalEnvironment();
+
+	private LocalEnvironment() {
+		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public Environment getEnvironment() {
-		return env;
+	public static Environment getInstance() {
+		return instance;
 	}
 
 	@Override
@@ -45,10 +45,8 @@ public class InMemoryBelief extends SelfAwareObject implements Belief {
 	}
 
 	@Override
-	public void setEnvironment(Environment env) {
-		this.env = env;
+	public List<Status> getStatus() {
+		return status;
 	}
-
-
 
 }

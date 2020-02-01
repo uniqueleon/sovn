@@ -1,18 +1,19 @@
 package org.aztec.sovn.core.mas.impl;
 
+import org.aztec.sovn.core.mas.BDIAgent;
+import org.aztec.sovn.core.mas.Environment;
 import org.aztec.sovn.core.mas.Kownledge;
 import org.aztec.sovn.core.mas.ml.prolog.PrologEngine;
 import org.aztec.sovn.core.mas.utils.AgentLogger;
 
 import alice.tuprolog.InvalidLibraryException;
-import alice.tuprolog.InvalidTheoryException;
-import alice.tuprolog.MalformedGoalException;
 
 public class PrologBelief extends InMemoryBelief {
 	
 	PrologEngine prolog;
 
-	public PrologBelief() throws InvalidLibraryException {
+	public PrologBelief(BDIAgent self,Environment env) throws InvalidLibraryException {
+		super(self,env);
 		prolog = new PrologEngine();
 	}
 

@@ -10,7 +10,7 @@ import java.util.List;
  * @author uniqueleon
  *
  */
-public interface KonwledgeInterpreter {
+public interface KownledgeInterpreter {
 
 	public boolean accept(Status status);
 	public List<Kownledge> interpret(Status status);

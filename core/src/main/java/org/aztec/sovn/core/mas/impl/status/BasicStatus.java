@@ -9,17 +9,7 @@ public abstract class BasicStatus extends MapBasedStatus {
 	
 	protected abstract List<StatusValidator> getValidators();
 
-	public static interface HealthKeys{
-		// if this value equals 0 or below 0, the agent will "die".
-		String HealthPoint = "HP";
-		// if this value equals 0 or below 0, the agent will "hungry". 
-		String FullPoint = "FP";
-		
-		String DirtyPoint = "DP";
-		String SickPoint = "SP";
-		String MovePoint = "MP";
-		String ActionPoint = "AP";
-	}
+	
 
 	@Override
 	protected void validate(String name, Object value) {
