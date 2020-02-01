@@ -4,7 +4,7 @@ import org.aztec.sovn.core.mas.Kownledge;
 
 public class Dead extends BaseKownledge {
 
-	public Dead(String name) {
+	public Dead() {
 		super(Kownledge.BaseKownledge.DEAD.getName());
 	}
 

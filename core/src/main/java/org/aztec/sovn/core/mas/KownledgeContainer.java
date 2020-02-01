@@ -1,7 +1,8 @@
 package org.aztec.sovn.core.mas;
 
 import java.util.List;
-import java.util.Map;
+
+import org.aztec.sovn.core.mas.ml.prolog.PrologEngine;
 
 public interface KownledgeContainer {
 
@@ -9,4 +10,5 @@ public interface KownledgeContainer {
 	public void setKownledge(String name,Kownledge konwledge);
 	public List<Kownledge> getKownledges();
 	public List<KownledgeInterpreter> getInterpreters();
+	public PrologEngine getProlog();
 }

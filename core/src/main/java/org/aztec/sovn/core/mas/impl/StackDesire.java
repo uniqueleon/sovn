@@ -5,8 +5,12 @@ import java.util.Stack;
 import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Desire;
 import org.aztec.sovn.core.mas.Intention;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 
+@Component("stackDesire")
+@Scope("prototype")
 public class StackDesire implements Desire {
 	
 	protected Stack<Intention> intentions = new Stack<>();

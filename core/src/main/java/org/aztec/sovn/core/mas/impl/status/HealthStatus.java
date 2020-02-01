@@ -9,18 +9,18 @@ public class HealthStatus extends BasicStatus {
 	
 	public static interface HealthKeys{
 		/**
-		 *  if this value equals 0 or below 0, the agent will "die".
+		 *  To show  how busy the agent was.
 		 */
-		String HealthPoint = "HP";
+		String busyPoint = "busyPoint";
 		/**
-		 *  if this value equals 0 or below 0, the agent will "hungry". 
+		 *  To show how busy the network connection was . 
 		 */
-		String FullPoint = "FP";
+		String networkBusyPoint = "networkBusyPoint";
 		
-		String DirtyPoint = "DP";
-		String SickPoint = "SP";
-		String MovePoint = "MP";
-		String ActionPoint = "AP";
+		String networkLatency = "networkLatency";
+		String errorCount = "errorCount";
+		String successCount = "successCount";
+		String actionCount = "actionCount";
 	}
 
 	public HealthStatus() {

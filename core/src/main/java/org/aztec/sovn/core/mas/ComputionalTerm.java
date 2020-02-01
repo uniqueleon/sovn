@@ -12,5 +12,5 @@ public interface ComputionalTerm {
 	public boolean isAction();
 	public boolean isOuterService();
 	public boolean isInnerService();
-	public Plan toPlan();
+	public Plan toPlan(Object... args);
 }

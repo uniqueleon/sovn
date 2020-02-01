@@ -13,5 +13,5 @@ import java.util.List;
 public interface KownledgeInterpreter {
 
 	public boolean accept(Status status);
-	public List<Kownledge> interpret(Status status);
+	public Kownledge interpret(Status status);
 }

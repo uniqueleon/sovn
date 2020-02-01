@@ -6,16 +6,18 @@ import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.BDIAgentMetaData;
 import org.aztec.sovn.core.mas.Belief;
 import org.aztec.sovn.core.mas.Desire;
-import org.aztec.sovn.core.mas.DesireGenerator;
 import org.aztec.sovn.core.mas.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.TickerBehaviour;
 import reactor.core.publisher.Flux;
 
-
+@Component("baseBDIAgent")
+@Scope("prototype")
 public class BaseBDIAgent extends Agent implements BDIAgent {
 
 	/**
@@ -32,10 +34,7 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 	
 	private Flux<Desire> desires;
 	
-	@Autowired
-	private DesireGenerator generator;
-	
-	private List<Status> status;
+	private Status status;
 
 	@Override
 	public Belief getBeliefs() {
@@ -52,8 +51,8 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 			}
 			behaviour.setAgent(this);
 			super.addBehaviour(behaviour);
+			behaviours.add(behaviour);
 		}
-		desires = generator.generate(this);
 		super.setup();
 	}
 
@@ -62,6 +61,7 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 		for(Behaviour behaviour : behaviours){
 			super.removeBehaviour(behaviour);
 		}
+		behaviours.clear();
 		super.takeDown();
 	}
 
@@ -84,7 +84,6 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 
 	@Override
 	public void setDesire(Flux<Desire> desire) {
-		// TODO Auto-generated method stub
 		this.desires = desire;
 	}
 
@@ -95,7 +94,13 @@ public class BaseBDIAgent extends Agent implements BDIAgent {
 
 
 	@Override
-	public List<Status> getStatus() {
+	public Status getStatus() {
 		return status;
+	}
+
+
+	@Override
+	public List<Behaviour> getBahaviors() {
+		return behaviours;
 	}
 }

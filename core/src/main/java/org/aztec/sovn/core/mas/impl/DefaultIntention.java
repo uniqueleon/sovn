@@ -6,9 +6,13 @@ import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Intention;
 import org.aztec.sovn.core.mas.Plan;
 import org.aztec.sovn.core.mas.utils.ExecutorServices;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
 
+@Component("defaultIntention")
+@Scope("prototype")
 public class DefaultIntention implements Intention {
 	
 	protected List<Plan> plans;

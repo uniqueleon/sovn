@@ -1,8 +1,5 @@
 package org.aztec.sovn.core.mas;
 
-import java.util.List;
-import java.util.Map;
-
 /**
  * Beliefs represent knowledge of the world. However, in computational terms, Beliefs are just some way of representing
 the state of the world, be it as the value of a variable, a relational database, or symbolic
@@ -27,4 +24,5 @@ public interface Belief extends SelfAware,KownledgeContainer{
 
 	public Environment getEnvironment();
 	public void setEnvironment(Environment env);
+	public KownledgeContainer getKownledgeContainer();
 }

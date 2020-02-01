@@ -1,11 +1,11 @@
 package org.aztec.sovn.core.mas.impl.behaviour;
 
-import java.util.List;
-
+import org.apache.commons.collections.CollectionUtils;
 import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Belief;
+import org.aztec.sovn.core.mas.Desire;
 import org.aztec.sovn.core.mas.DesireGenerator;
-import org.aztec.sovn.core.mas.KownledgeInterpreter;
+import org.aztec.sovn.core.mas.Intention;
 import org.aztec.sovn.core.mas.Kownledge;
 import org.aztec.sovn.core.mas.impl.AgentHelper;
 import org.aztec.sovn.core.mas.utils.ExecutorServices;
@@ -24,6 +24,9 @@ public class Sensor extends TickerBehaviour {
 	private static final long serialVersionUID = -7622835821667924806L;
 
 	private static long DEFAULT_AGENT_PERIOD = 10l;
+	
+	private long sleepTimeOut = 1000l;
+	private long sleepTime = System.currentTimeMillis();
 
 	public Sensor() {
 		super(null, DEFAULT_AGENT_PERIOD);
@@ -37,10 +40,26 @@ public class Sensor extends TickerBehaviour {
 
 	@Override
 	protected void onTick() {
-		BDIAgent self = AgentHelper.cast2BDIAgent(getAgent());
-		if (self != null) {
-			ExecutorServices.execute(new StatusConsumer(self));
+		if(isRunnable || isSleepTimeout()) {
+			BDIAgent self = AgentHelper.cast2BDIAgent(getAgent());
+			if (self != null) {
+				ExecutorServices.execute(new StatusConsumer(self));
+			}
 		}
+	}
+	
+	private boolean isSleepTimeout() {
+		long curTime = System.currentTimeMillis();
+		if((curTime - sleepTime) > sleepTimeOut) {
+			isRunnable = true;
+		}
+		return isRunnable;
+	}
+	
+	public void stop(long sleepTimeout) {
+		isRunnable = false;
+		this.sleepTime = System.currentTimeMillis();
+		this.sleepTimeOut = sleepTimeout;
 	}
 	
 	public class StatusConsumer implements Runnable{
@@ -54,16 +73,27 @@ public class Sensor extends TickerBehaviour {
 		@Override
 		public void run() {
 			Belief belief = self.getBeliefs();
-			Flux.fromStream(self.getStatus().stream())
-			.subscribe(status -> {
-				List<Kownledge> kownledges  = belief.getKownledges();
-				List<KownledgeInterpreter> interpreters = belief.getInterpreters();
-				interpreters.stream().forEach(interpreter -> {
-					if(interpreter.accept(status)) {
-						kownledges.addAll(interpreter.interpret(status));
+			Flux.fromStream(belief.getInterpreters().stream())
+			.subscribe(interprector -> {
+				Flux<Flux<Desire>> desires = Flux.from(ss -> {
+					if(interprector.accept(self.getStatus())) {
+						Kownledge kownledge = interprector.interpret(self.getStatus());
+						belief.setKownledge(kownledge.name(), kownledge);
+						ss.onNext(generator.generate(self));
 					}
 				});
-				self.setDesire(generator.generate(self));
+				desires.subscribe(flux -> {
+					flux.subscribe(desire -> {
+						if(desire.isReasonable()) {
+							Intention intention = desire.getRationalIntension();
+							if(intention.isReady() && !intention.isFinished()
+									&& !intention.isRunning() && !intention.isStoped()
+									&& CollectionUtils.isNotEmpty(intention.getPlans())) {
+								intention.execute();
+							}
+						}
+					});
+				});
 				//return konwledges;
 				
 			});
@@ -71,37 +101,4 @@ public class Sensor extends TickerBehaviour {
 		
 	}
 
-	public static void main(String[] args) {
-		 Flux<String> flux1 = Flux.from(str -> {
-			    for(int i = 0;i < 3;i ++) {
-
-					try {
-						Thread.currentThread().sleep(1000);
-						str.onNext("suck");
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			    }
-				
-			});
-		 flux1.subscribe(str -> {
-				System.out.println(str);
-			});
-		 flux1 = Flux.from(str -> {
-			    for(int i = 0;i < 3;i ++) {
-
-					try {
-						Thread.currentThread().sleep(1000);
-						str.onNext("suck2");
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			    }
-				
-			});
-		System.out.println("finished");
-		
-	}
 }

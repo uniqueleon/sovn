@@ -4,7 +4,7 @@ import org.aztec.sovn.core.mas.Kownledge;
 
 public class Talk extends BaseKownledge {
 
-	public Talk(String name) {
+	public Talk() {
 		super(Kownledge.BaseKownledge.TALK.getName());
 	}
 

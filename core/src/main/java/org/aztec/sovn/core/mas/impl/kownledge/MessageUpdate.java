@@ -4,7 +4,7 @@ import org.aztec.sovn.core.mas.Kownledge;
 
 public class MessageUpdate extends BaseKownledge {
 
-	public MessageUpdate(String name) {
+	public MessageUpdate() {
 		super(Kownledge.BaseKownledge.STATUS_MESSAGE_UPDATE.getName());
 	}
 

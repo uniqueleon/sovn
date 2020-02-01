@@ -7,17 +7,29 @@ import org.aztec.sovn.core.mas.Kownledge;
 import org.aztec.sovn.core.mas.KownledgeContainer;
 import org.aztec.sovn.core.mas.KownledgeInterpreter;
 import org.aztec.sovn.core.mas.Status;
+import org.aztec.sovn.core.mas.ml.prolog.PrologEngine;
+import org.aztec.sovn.core.mas.utils.AgentLogger;
 
 import com.google.common.collect.Lists;
 
+import alice.tuprolog.InvalidLibraryException;
+
 public class LocalEnvironment implements Environment {
 
-	private KownledgeContainer container = new BasicKownledgeContainer();
-	private List<Status> status = Lists.newArrayList();
-	private static final LocalEnvironment instance = new LocalEnvironment();
+	private KownledgeContainer container ;
+	private Status status ;
+	private static LocalEnvironment instance = null;
+	
+	static {
+		try {
+			instance = new LocalEnvironment();
+		} catch (Exception e) {
+			AgentLogger.error(e);
+		}
+	}
 
-	private LocalEnvironment() {
-		// TODO Auto-generated constructor stub
+	private LocalEnvironment() throws InvalidLibraryException {
+		container = new PrologKownledgeContainer();
 	}
 	
 	public static Environment getInstance() {
@@ -45,8 +57,13 @@ public class LocalEnvironment implements Environment {
 	}
 
 	@Override
-	public List<Status> getStatus() {
+	public Status getStatus() {
 		return status;
+	}
+
+	@Override
+	public PrologEngine getProlog() {
+		return container.getProlog();
 	}
 
 }
