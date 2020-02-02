@@ -3,9 +3,12 @@ package org.aztec.sovn.core.mas.impl.plan;
 import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Plan;
 import org.aztec.sovn.core.mas.impl.behaviour.Sensor;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 import jade.core.behaviours.Behaviour;
 
+@Component
 public class SleepPlan extends BasicPlan implements Plan {
 
 

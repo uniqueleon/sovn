@@ -1,8 +1,9 @@
 package org.aztec.sovn.core.mas.impl.plan;
 
 import org.aztec.sovn.core.mas.BDIAgent;
-import org.aztec.sovn.core.mas.impl.status.HealthStatus;
+import org.springframework.stereotype.Component;
 
+@Component
 public class IdlePlan extends BasicPlan {
 
 	public IdlePlan() {

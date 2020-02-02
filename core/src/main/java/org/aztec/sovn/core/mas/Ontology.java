@@ -7,5 +7,6 @@ package org.aztec.sovn.core.mas;
  */
 public interface Ontology {
 
-	public Term translate(Kownledge kownledge);
+	public <T> T translate(Kownledge kownledge);
+	public void mapping(Kownledge kownledge,Object object);
 }

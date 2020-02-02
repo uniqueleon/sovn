@@ -5,7 +5,9 @@ import org.aztec.sovn.core.mas.KownledgeIntrospector;
 import org.aztec.sovn.core.mas.Status;
 import org.aztec.sovn.core.mas.impl.kownledge.Dead;
 import org.aztec.sovn.core.mas.impl.status.HealthStatus;
+import org.springframework.stereotype.Component;
 
+@Component("deadIntrospector")
 public class DeadIntrospector  implements KownledgeIntrospector{
 
 	public DeadIntrospector() {

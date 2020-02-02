@@ -12,6 +12,10 @@ import java.util.Map;
 public interface Kownledge {
 
 	public String name();
+
+	int hashCode();
+
+	boolean equals(Object obj);
 	
 	public static enum BaseKownledge{
 		STATUS_NUMBER_OPT("numberOpt"),
@@ -39,4 +43,7 @@ public interface Kownledge {
 		
 		
 	}
+
+	
+	
 }

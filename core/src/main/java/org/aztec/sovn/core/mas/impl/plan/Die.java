@@ -1,12 +1,15 @@
 package org.aztec.sovn.core.mas.impl.plan;
 
 import org.aztec.sovn.core.mas.BDIAgent;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 import jade.core.Agent;
 
-public class Dead extends BasicPlan {
+@Component
+public class Die extends BasicPlan {
 
-	public Dead() {
+	public Die() {
 		// TODO Auto-generated constructor stub
 	}
 

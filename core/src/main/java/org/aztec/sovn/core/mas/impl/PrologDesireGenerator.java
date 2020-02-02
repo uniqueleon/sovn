@@ -49,7 +49,7 @@ public class PrologDesireGenerator implements  org.aztec.sovn.core.mas.DesireGen
 								if(term != null) {
 									if(term.isComputional()) {
 										ComputionalTerm cTerm = term.cast();
-										intention.getPlans().add(cTerm.toPlan());
+										intention.getPlans().addAll(cTerm.toPlans());
 									}
 									else {
 										belief.setKownledge(term.name(), new StringifyKonwledge(term.name()));
@@ -64,7 +64,7 @@ public class PrologDesireGenerator implements  org.aztec.sovn.core.mas.DesireGen
 									Term term = ontology.translate(kownledge);
 									if(term != null && term.isComputional()) {
 										ComputionalTerm cTerm = term.cast();
-										intention.getPlans().add(cTerm.toPlan(agentName));
+										intention.getPlans().addAll(cTerm.toPlans(agentName));
 									}
 								}
 							}

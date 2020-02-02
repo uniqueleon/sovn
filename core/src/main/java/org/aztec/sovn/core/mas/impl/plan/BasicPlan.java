@@ -1,9 +1,12 @@
 package org.aztec.sovn.core.mas.impl.plan;
 
+import org.aztec.sovn.core.mas.AgentConstant.MathOperator;
 import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Plan;
+import org.aztec.sovn.core.mas.Status;
 import org.aztec.sovn.core.mas.impl.status.HealthStatus;
 import org.aztec.sovn.core.mas.utils.AgentLogger;
+import org.springframework.stereotype.Component;
 
 public abstract class BasicPlan implements Plan {
 
@@ -20,30 +23,23 @@ public abstract class BasicPlan implements Plan {
 
 	@Override
 	public void execute(BDIAgent agent) {
-		increase(agent, HealthStatus.HealthKeys.busyPoint);
+		Status status = agent.getStatus();
+		status.operateNumber(HealthStatus.HealthKeys.busyPoint, 1d, MathOperator.ADD);
 		while (runnable) {
 			try {
 				doRun(agent);
-				increase(agent, HealthStatus.HealthKeys.successCount);
+				status.operateNumber(HealthStatus.HealthKeys.successCount, 1d, MathOperator.ADD);
 			} catch (Exception e) {
 				AgentLogger.error(e);
-				increase(agent, HealthStatus.HealthKeys.errorCount);
+				status.operateNumber(HealthStatus.HealthKeys.errorCount, 1d, MathOperator.ADD);
 			}
 			if (!shouldBeContinue()) {
 				finished = true;
 				break;
 			}
 		}
-		increase(agent, HealthStatus.HealthKeys.actionCount);
-	}
-	
-	private void increase(BDIAgent agent,String key) {
-		Long value = agent.getStatus().getAttribute(key);
-		if (value == null) {
-			value = 0l;
-		}
-		value ++;
-		agent.getStatus().setAttribute(key, value);
+		status.operateNumber(HealthStatus.HealthKeys.actionCount, 1d, MathOperator.ADD);
+		status.operateNumber(HealthStatus.HealthKeys.busyPoint, 1d, MathOperator.SUBSTRACT);
 	}
 
 	@Override

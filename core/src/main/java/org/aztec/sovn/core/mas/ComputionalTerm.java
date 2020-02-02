@@ -1,6 +1,6 @@
 package org.aztec.sovn.core.mas;
 
-import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * 计算机术语
@@ -9,8 +9,7 @@ import java.lang.reflect.Method;
  */
 public interface ComputionalTerm {
 
-	public boolean isAction();
 	public boolean isOuterService();
 	public boolean isInnerService();
-	public Plan toPlan(Object... args);
+	public List<Plan> toPlans(Object... args);
 }
