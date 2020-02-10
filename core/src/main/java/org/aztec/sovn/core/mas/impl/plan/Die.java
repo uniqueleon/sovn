@@ -16,8 +16,7 @@ public class Die extends BasicPlan {
 	@Override
 	protected void doRun(BDIAgent agent) throws Exception {
 		if(agent instanceof Agent) {
-			Agent jadeAgent = (Agent) agent;
-			jadeAgent.doDelete();
+			agent.setAlive(false);
 		}
 	}
 

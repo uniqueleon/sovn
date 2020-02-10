@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public abstract class OuterTerm extends BasicTerm {
 
-	public OuterTerm() {
-		// TODO Auto-generated constructor stub
+	public OuterTerm(String name) {
+		super("OUTER_TERM_" + name);
 	}
 
 	@Override
@@ -19,4 +19,10 @@ public abstract class OuterTerm extends BasicTerm {
 		return false;
 	}
 
+	@Override
+	public boolean isComputional() {
+		return true;
+	}
+
+	
 }

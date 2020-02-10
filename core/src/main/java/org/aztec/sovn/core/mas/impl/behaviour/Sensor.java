@@ -8,13 +8,16 @@ import org.aztec.sovn.core.mas.DesireGenerator;
 import org.aztec.sovn.core.mas.Intention;
 import org.aztec.sovn.core.mas.Kownledge;
 import org.aztec.sovn.core.mas.impl.AgentHelper;
+import org.aztec.sovn.core.mas.utils.AgentLogger;
 import org.aztec.sovn.core.mas.utils.ExecutorServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import jade.core.behaviours.TickerBehaviour;
 import reactor.core.publisher.Flux;
 
+@Component("sensor")
 public class Sensor extends TickerBehaviour {
 	
 
@@ -56,7 +59,7 @@ public class Sensor extends TickerBehaviour {
 		return isRunnable;
 	}
 	
-	public void stop(long sleepTimeout) {
+	public void sleep(long sleepTimeout) {
 		isRunnable = false;
 		this.sleepTime = System.currentTimeMillis();
 		this.sleepTimeOut = sleepTimeout;
@@ -72,6 +75,7 @@ public class Sensor extends TickerBehaviour {
 
 		@Override
 		public void run() {
+			AgentLogger.info("Agent is working!");
 			Belief belief = self.getBeliefs();
 			Flux.fromStream(belief.getInterpreters().stream())
 			.subscribe(interprector -> {

@@ -2,11 +2,10 @@ package org.aztec.sovn.core.mas.impl.term;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public abstract class InternalTerm extends BasicTerm {
 
-	public InternalTerm() {
-		// TODO Auto-generated constructor stub
+	public InternalTerm(String name) {
+		super("INTERNAL_" + name);
 	}
 
 	@Override
@@ -18,5 +17,11 @@ public abstract class InternalTerm extends BasicTerm {
 	public boolean isInnerService() {
 		return true;
 	}
+
+	@Override
+	public boolean isComputional() {
+		return true;
+	}
+
 
 }

@@ -16,6 +16,7 @@ import reactor.core.publisher.Flux;
 public interface BDIAgent {
 
 	public String getName();
+	public void setName(String name);
 	public Belief getBeliefs();
 	public Status getStatus();
 	public BDIAgentMetaData getMetaData();
@@ -23,4 +24,6 @@ public interface BDIAgent {
 	public void setDesire(Flux<Desire> desires);
 	public Flux<Desire> getCurrentDesire();
 	public List<Behaviour> getBahaviors();
+	public boolean isAlive();
+	public void setAlive(boolean alive);
 }

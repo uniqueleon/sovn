@@ -7,7 +7,7 @@ import java.util.List;
  * @author uniqueleon
  *
  */
-public interface ComputionalTerm {
+public interface ComputionalTerm extends Term {
 
 	public boolean isOuterService();
 	public boolean isInnerService();

@@ -5,16 +5,19 @@ import java.util.Map;
 import org.aztec.sovn.core.mas.BDIAgent;
 import org.aztec.sovn.core.mas.Status;
 import org.aztec.sovn.core.mas.utils.Eval;
-import org.springframework.core.annotation.Order;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.google.api.client.util.Maps;
 
 @Component
+@Scope("prototype")
 public class NumericUpdater extends BasicPlan {
 	
 	public String expression;
 	public String targetStatus;
+	
+	
 
 	public NumericUpdater(String targetStatus,String expression) {
 		// TODO Auto-generated constructor stub

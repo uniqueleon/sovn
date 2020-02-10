@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 public class SleepTerm extends InternalTerm {
 
 	public SleepTerm() {
-		// TODO Auto-generated constructor stub
+		super("SLEEP");
 	}
 
 	@Override
-	protected void initPlans() {
+	protected void initPlans(Object... args) {
 		plans.add(beanFactory.getBean(Die.class));
 
 	}

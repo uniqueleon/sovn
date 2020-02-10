@@ -18,7 +18,7 @@ import reactor.core.publisher.Flux;
 
 @Component("baseBDIAgent")
 @Scope("prototype")
-public class BasicBDIAgent extends Agent implements BDIAgent {
+public class BasicBDIAgent implements BDIAgent {
 
 	/**
 	 * 
@@ -26,6 +26,10 @@ public class BasicBDIAgent extends Agent implements BDIAgent {
 	private static final long serialVersionUID = -7935698971870336568L;
 
 	private Belief belief;
+	
+	private String name;
+	
+	private boolean alive = false;
 	
 	@Autowired
 	private List<Behaviour> behaviours;
@@ -43,27 +47,11 @@ public class BasicBDIAgent extends Agent implements BDIAgent {
 	}
 
 
-	@Override
-	protected void setup() {
-		for(Behaviour behaviour : behaviours){
-			if(behaviour instanceof TickerBehaviour) {
-				((TickerBehaviour) behaviour).reset(metaData.getRateOfReaction());
-			}
-			behaviour.setAgent(this);
-			super.addBehaviour(behaviour);
-			behaviours.add(behaviour);
-		}
-		super.setup();
+	public BasicBDIAgent() {
+		super();
 	}
+	
 
-	@Override
-	protected void takeDown() {
-		for(Behaviour behaviour : behaviours){
-			super.removeBehaviour(behaviour);
-		}
-		behaviours.clear();
-		super.takeDown();
-	}
 
 	public BasicBDIAgent(BDIAgentMetaData metaData) {
 		super();
@@ -102,5 +90,29 @@ public class BasicBDIAgent extends Agent implements BDIAgent {
 	@Override
 	public List<Behaviour> getBahaviors() {
 		return behaviours;
+	}
+
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+
+	@Override
+	public boolean isAlive() {
+		return alive;
+	}
+
+
+	@Override
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
+
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
 	}
 }

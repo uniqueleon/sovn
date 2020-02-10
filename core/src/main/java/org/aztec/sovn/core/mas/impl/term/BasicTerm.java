@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.aztec.sovn.core.mas.ComputionalTerm;
 import org.aztec.sovn.core.mas.Plan;
+import org.aztec.sovn.core.mas.Term;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -18,18 +19,38 @@ public abstract class BasicTerm implements ComputionalTerm,BeanFactoryAware{
 	BeanFactory beanFactory;
 	
 	private AtomicBoolean hasInited = new AtomicBoolean(false);
+	
+	private String name;
 
-	public BasicTerm() {
+	public BasicTerm(String name) {
 		super();
+		this.name = "TERM_" + name;
+	}
+	
+	
+
+	@Override
+	public String name() {
+		return name;
 	}
 
-	protected abstract void initPlans();
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends Term> T cast() {
+		return (T) this;
+	}
+
+
+
+	protected abstract void initPlans(Object... args);
 
 	@Override
 	public List<Plan> toPlans(Object... args) {
 		if(!hasInited.get()
 				&& hasInited.compareAndSet(false, true)) {
-			initPlans();
+			initPlans(args);
 		}
 		return plans;
 	}

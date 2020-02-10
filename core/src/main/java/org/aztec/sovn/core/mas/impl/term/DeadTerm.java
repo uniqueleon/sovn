@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 public class DeadTerm extends InternalTerm {
 
 	public DeadTerm() {
-		// TODO Auto-generated constructor stub
+		super("DEAD");
 	}
 
 	@Override
-	protected void initPlans() {
+	protected void initPlans(Object... args) {
 		plans.add(beanFactory.getBean(Die.class));
 	}
 

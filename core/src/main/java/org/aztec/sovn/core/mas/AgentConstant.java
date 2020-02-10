@@ -2,6 +2,9 @@ package org.aztec.sovn.core.mas;
 
 public interface AgentConstant {
 	
+	public static final long DEFAULT_RATE_OF_REACTION = 100l;
+	public static final long DEFAULT_SLEEP_INTERVAL = 60000l;
+	
 	public static enum MathOperator{
 		ADD('+'),
 		SUBSTRACT('-'),
